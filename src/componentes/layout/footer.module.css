@@ -1,0 +1,37 @@
+
+.main-content {
+  flex: 1; /* O conteúdo principal ocupa o espaço disponível */
+}
+
+.footer {
+  background-color: #2c3440;
+  color: #fff;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  height: 7em;
+ 
+}
+
+.social_list {
+  display: flex;
+  justify-content: center; 
+  align-items: center; 
+  list-style-type: none;
+  padding: 0; 
+}
+
+.social_list li {
+  margin: 0 1em; 
+}
+
+.social_list svg {
+  font-size: 1.5em; 
+  cursor: pointer; 
+}
+
+@media (max-width: 768px) {
+  .footer {
+    padding: 2em; /* Ajusta o padding em telas menores */
+  }
+}

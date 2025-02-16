@@ -1,0 +1,37 @@
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(
+      to bottom, 
+      rgba(20, 24, 28, 0.3) 0%, 
+      rgba(20, 24, 28, 0.8) 50%, 
+      #14181c 100%
+    ),
+    linear-gradient(
+      to right,
+      rgba(20, 24, 28, 0.8) 0%,
+      rgba(20, 24, 28, 0.3) 50%,
+      rgba(20, 24, 28, 0.8) 100%
+    ),
+    url('../../../wallpaper_plak.jpg');
+  background-size: cover;
+  background-position: center;
+
+}
+
+.start {
+  justify-content: flex-start;
+}
+
+.column {
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.minHeight {
+      min-height: 95vh; 
+  }

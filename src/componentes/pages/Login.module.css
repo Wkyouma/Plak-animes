@@ -1,0 +1,162 @@
+.Container{
+    width: 40%;
+    justify-content: center;
+    display: flex;
+    margin: 5%;
+}
+.login_box {
+    background: rgba(44, 52, 64, 0.95);
+    padding: 3em;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 500px; 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+.login_header {
+    text-align: center;
+    margin-bottom: 2em;
+}
+
+.login_header h2 {
+    color: #00e054;
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+
+.login_header p {
+    color: #89a;
+}
+
+.social_login {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    margin-bottom: 2em;
+}
+
+.social_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1em;
+    padding: 0.8em;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.social_button:hover {
+    background: rgba(51, 255, 0, 0.1);
+}
+
+.social_button i {
+    font-size: 1.2em;
+}
+
+.divider {
+    position: relative;
+    text-align: center;
+    margin: 2em 0;
+}
+
+.divider::before,
+.divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 45%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.divider::before {
+    left: 0;
+}
+
+.divider::after {
+    right: 0;
+}
+
+.divider span {
+    background: #2c3440;
+    padding: 0 1em;
+    color: #89a;
+}
+
+.login_form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.form_group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+}
+
+.form_group label {
+    color: #89a;
+    font-size: 0.9em;
+}
+
+.form_group input {
+    padding: 0.8em;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    color: #fff;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+.form_group input:focus {
+    outline: none;
+    border-color: #00e054;
+}
+
+.form_group input::placeholder {
+    color: rgba(255, 255, 255, 0.3);
+}
+
+.forgot_password {
+    color: #00e054;
+    text-decoration: none;
+    font-size: 0.9em;
+    align-self: flex-end;
+    margin-top: -1em;
+}
+
+.forgot_password:hover {
+    text-decoration: underline;
+}
+
+.switch_form {
+    text-align: center;
+    margin-top: 2em;
+    color: #89a;
+}
+
+.switch_button {
+    color: #00e054;
+    text-decoration: none;
+    margin-left: 0.5em;
+}
+
+.switch_button:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 480px) {
+    .Container{
+        width: 460px;
+    }
+    .login_box {
+        width: 300px;
+        padding: 2em;
+    }
+} 

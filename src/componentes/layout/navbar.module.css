@@ -1,0 +1,74 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* Espaça o logo e a lista de navegação */
+  align-items: center; /* Alinha verticalmente os itens */
+  flex-wrap: wrap;
+  background-color: transparent;
+  color: #fff;
+  text-align: center;
+  height: 8em;
+  transition: background-color 0.3s ease;
+  padding: 0 1em; /* Adiciona um pouco de espaçamento nas laterais */
+}
+
+.navbar:hover {
+  background-color: rgba(44, 52, 64, 0.95);
+  backdrop-filter: blur(5px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+
+.logo {
+  
+  height: 100px; /* Define o tamanho da imagem */
+  margin-top: 15px;
+  margin-right: 1em; /* Espaço entre o logo e os itens */
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  align-items: center;
+}
+
+.item {
+  margin-right: 3em;
+  font-size: larger;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.item a {
+  color: #abb8d1;
+  text-decoration: none;
+}
+
+.item a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column; /* Ajusta o layout para empilhar itens em telas menores */
+    align-items: center;
+    padding: 0.5em;
+    font-size: 10px;
+  }
+
+  .logo {
+    height: 60px;
+    margin-bottom: 1em; /* Adiciona espaço abaixo do logo */
+  }
+
+  .list {
+   
+    align-items: center;
+  }
+
+  .item {
+    margin-top: 30px;
+    margin-right: 7;
+    margin-bottom: 1em; /* Espaço entre os itens na vertical */
+  }
+}

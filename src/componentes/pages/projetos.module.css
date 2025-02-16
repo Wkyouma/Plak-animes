@@ -1,0 +1,64 @@
+.container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    background-color: #9b9b9b;
+    border-radius: 10px; 
+    position: relative; 
+  }
+  
+  .image {
+    border-radius: 4%;
+    width: 200px;
+    height: 300px; 
+    margin-right: 20px; 
+    margin-bottom: 350px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+  }
+  .positionButton {
+    position: absolute; 
+    top: 10px;
+    left: 10px; 
+}
+  
+  .textContainer {
+    max-width: 500px; 
+    border-top: 2px solid black; 
+    border-bottom:2px solid black;
+    padding-top: 10px; 
+  }
+
+  .averageContainer {
+    
+    margin-left: 4%;
+    margin-bottom: 350px;
+    display: flex;
+    align-items: center;
+    flex-direction: column; 
+    background-color: rgb(59, 57, 71);
+    color: rgb(155, 199, 199);
+    border-radius: 4%;
+    width: 300px;
+    height: 300px;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.iframe {
+    margin-top: 3%;
+    width: 100%; /* Ajuste a largura para 100% do contêiner pai */
+    max-width: 590px; /* Largura máxima */
+    height: 295px; /* Altura fixa */
+    border: none; /* Remove a borda */
+    border-radius: 8px; /* Bordas arredondadas */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Sombras sutis */
+}
+
+.bottom{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+}
+
