@@ -33,11 +33,17 @@
    
 }
 .search{
-    margin: 2%;
+    position: relative; 
+    margin-bottom: 5%;
+    top: 10px; 
+    z-index: 100;
+    padding: 20px 0;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    
+
+ 
 }
 .positionButtonMore{
   display: flex;
@@ -56,13 +62,7 @@
 }
 
 .div {
-  width: 100%;
-  height: 100%;
-}
-
-.search {
-  margin: 2%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    padding-top: 20px;
 }

@@ -2,7 +2,8 @@ import Searchinput from "../eventos/searchinput";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import styles from "./animes.module.css";
-import Button from "../layout/button"
+import Button from "../layout/button";
+
 function NewProject() {
   const [text, setText] = useState("");
   const api = "https://kitsu.io/api/edge/";
@@ -11,29 +12,51 @@ function NewProject() {
   const [hasMore, setHasMore] = useState(true);
   const navigate = useNavigate();
 
-  const fetchAnime = (query, pageOffset = 0) => {
-    const url = query
-      ? `${api}anime?filter[text]=${query}&page[limit]=20&page[offset]=${pageOffset}&sort=popularityRank`
-      : `${api}anime?page[limit]=20&page[offset]=${pageOffset}&sort=popularityRank`; 
+  const fetchAnime = async (query, pageOffset = 0) => {
+    try {
+      const url = query
+        ? `${api}anime?filter[text]=${query}&page[limit]=20&page[offset]=${pageOffset}&sort=popularityRank`
+        : `${api}anime?page[limit]=20&page[offset]=${pageOffset}&sort=popularityRank`;
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.data.length > 0) {
-          setInfo((prevInfo) => [...prevInfo, ...data.data]);
-          setHasMore(true);
+      const response = await fetch(url);
+      const data = await response.json();
+
+      if (data.data.length > 0) {
+        if (pageOffset === 0) {
+          // Se for a primeira página, substitui completamente o estado
+          setInfo(data.data);
         } else {
-          setHasMore(false);
+          // Se não, adiciona ao estado existente, evitando duplicatas
+          setInfo(prevInfo => {
+            const newItems = data.data.filter(newItem => 
+              !prevInfo.some(existingItem => existingItem.id === newItem.id)
+            );
+            return [...prevInfo, ...newItems];
+          });
         }
-      })
-      .catch((error) => {
-        console.error("Erro ao buscar os dados:", error);
-      });
+        setHasMore(data.data.length === 20);
+      } else {
+        setHasMore(false);
+      }
+    } catch (error) {
+      console.error("Erro ao buscar os dados:", error);
+    }
   };
 
   useEffect(() => {
-    fetchAnime(text, page * 20);
-  }, [text, page]);
+    const timeoutId = setTimeout(() => {
+      setPage(0);
+      fetchAnime(text, 0);
+    }, 300); // Debounce de 300ms
+
+    return () => clearTimeout(timeoutId);
+  }, [text]);
+
+  useEffect(() => {
+    if (page > 0) {
+      fetchAnime(text, page * 20);
+    }
+  }, [page]);
 
   const handleImageClicks = (anime) => {
     navigate("/AnimeInfo", { state: anime });
@@ -46,7 +69,7 @@ function NewProject() {
   return (
     <div className={styles.div}>
       <div className={styles.search}>
-        <Searchinput value={text} onChange={(str) => { setText(str); setPage(0); setInfo([]); }} />
+        <Searchinput value={text} onChange={(str) => setText(str)} />
       </div>
 
       {info.length > 0 && (
@@ -62,10 +85,12 @@ function NewProject() {
           ))}
         </ul>
       )}
+
       <div className={styles.positionButtonMore}>
-      {hasMore && (<Button  onClick={loadMore}>Carregar mais</Button>
-        
-      )}</div>
+        {hasMore && (
+          <Button onClick={loadMore}>Carregar mais</Button>
+        )}
+      </div>
     </div>
   );
 }

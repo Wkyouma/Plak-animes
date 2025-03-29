@@ -12,7 +12,7 @@ function Manga() {
   const [hasMore, setHasMore] = useState(true);
   const navigate = useNavigate();
 
-  const fetchAnime = (query, pageOffset = 0) => {
+  const fetchAnime = (query, pageOffset = 0, reset = false) => {
     const url = query
       ? `${api}manga?filter[text]=${query}&page[limit]=20&page[offset]=${pageOffset}&sort=popularityRank`
       : `${api}manga?page[limit]=20&page[offset]=${pageOffset}&sort=popularityRank`;
@@ -21,7 +21,7 @@ function Manga() {
       .then((response) => response.json())
       .then((data) => {
         if (data.data.length > 0) {
-          setInfo((prevInfo) => [...prevInfo, ...data.data]);
+          setInfo((prevInfo) => (reset ? data.data : [...prevInfo, ...data.data]));
           setHasMore(true);
         } else {
           setHasMore(false);
@@ -33,8 +33,13 @@ function Manga() {
   };
 
   useEffect(() => {
-    fetchAnime(text, page * 20);
-  }, [text, page]);
+    setPage(0); // Resetando a página sempre que o texto muda
+    fetchAnime(text, 0, true);
+  }, [text]);
+
+  useEffect(() => {
+    if (page > 0) fetchAnime(text, page * 20);
+  }, [page, text]);
 
   const handleImageClicks = (anime) => {
     navigate("/AnimeInfo", { state: anime });
@@ -50,7 +55,7 @@ function Manga() {
         <Searchinput value={text} onChange={(str) => setText(str)} />
       </div>
 
-      {info.length >0 && (
+      {info.length > 0 && (
         <ul className={styles.Anime_list}>
           {info.map((manga) => (
             <li key={manga.id} onClick={() => handleImageClicks(manga)}>
